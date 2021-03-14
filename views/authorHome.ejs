@@ -1,0 +1,25 @@
+<%- include("partials/header"); -%>
+
+<h1>Author's Page</h1>
+
+<% posts.forEach(function(post){ %>
+
+<div class="card">
+    <div class="card-header">
+        <h1><%= post.title %></h1>
+    </div>
+    <div class="card-body">
+        <p class="card-text">
+            <%=post.content.substring(0, 100) + " ..."%>
+            <a href="/posts/<%=post._id%>">Read More</a>
+        </p>
+        <a href="/edit/<%= post._id %>" class="btn btn-info">Edit</a>
+        <form action="/posts/<%= post._id %>?_method=DELETE" method="POST" class="deleteForm">
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+    </div>
+</div>
+<br />
+<br />
+
+<% }) %> <%- include("partials/footer"); -%>
